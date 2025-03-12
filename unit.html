@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/unit.css">
+    <title>Unit Converter</title>
+    <script src="scripts/unit.js"></script>
+</head>
+<body>
+    <h1>Unit Converter</h1>
+    <div class="container">
+        <div id="magnitude_box">
+            <select id="magnitudes" name="magnitudes" onchange="changeMagnitude()">
+                <option value="energy" selected>Energy</option>
+                <option value="area">Area</option>
+                <option value="mass">Mass</option>
+                <option value="volume">Volume</option>
+                <option value="frequency">Frequency</option>
+                <option value="length">Length</option>
+                <option value="pressure">Pressure</option>
+                <option value="temperature">Temperature</option>
+                <option value="time">Time</option>
+                <option value="speed">Speed</option>
+              </select>
+        </div>
+        <div class="unit_box" id="unit_box1">
+            <div class="unit_value">
+                <input type="text" id="value1" oninput="convertLeftToRight()" maxlength="18">
+            </div>         
+            <div id="unit_selector1">
+                <select id="magnitudes1" name="magnitudes" onchange="convertRightToLeft()">
+                    <option value="joule">Joule</option>
+                    <option value="kilojoule">Kilojoule</option>
+                    <option value="calorygram">Calory-gram</option>
+                    <option value="kilocalory">Kilocalory</option>
+                    <option value="watthour">Watt-hour</option>
+                    <option value="kilowatthour">Kilowatt-hour</option>
+                    <option value="electronvolt">Electronvolt</option>
+                </select>
+            </div>
+        </div>
+        <div class="unit_box" id="unit_box2">
+            <div class="unit_value">
+                <input type="text" id="value2" oninput="convertRightToLeft()" maxlength="18">
+            </div>
+            <div id="unit_selector2">
+                <select id="magnitudes2" name="magnitudes" onchange="convertLeftToRight()">
+                    <option value="joule">Joule</option>
+                    <option value="kilojoule">Kilojoule</option>
+                    <option value="calorygram">Calory-gram</option>
+                    <option value="kilocalory">Kilocalory</option>
+                    <option value="watthour">Watt-hour</option>
+                    <option value="kilowatthour">Kilowatt-hour</option>
+                    <option value="electronvolt">Electronvolt</option>
+                </select>
+            </div>
+        </div>
+        <div id="formula_box">
+            Multiply by ...
+        </div>
+    </div>
+</body>
+</html>
