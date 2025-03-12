@@ -1,11 +1,23 @@
-const unitsEnergy = {
-    joule:1,
-    kilojoule:0.001,
-    calorygram:0.239006,
-    kilocalory:0.000239006,
-    watthour:0.000277778,
-    kilowatthour:2.7778e-7,
-    electronvolt:6.242e18
+const units = {
+    energy: {
+        joule:1,
+        kilojoule:0.001,
+        calorygram:0.239006,
+        kilocalory:0.000239006,
+        watthour:0.000277778,
+        kilowatthour:2.7778e-7,
+        electronvolt:6.242e18
+    },
+    area: {
+        squarekilometer: 1,
+        squaremeter: 1e+6,
+        squaremile: 0.386102,
+        squareyard: 1.196e+6,
+        squarefoot: 1.076e+7,
+        squareinch: 1.55e+9,
+        acre: 247.105,
+        hectare: 100
+    }
 }
 
 const magnitudes = {
@@ -29,7 +41,7 @@ const magnitudes = {
         <option value="squarefoot">Square foot</option>
         <option value="squareinch">Square inch</option>
         <option value="acre">Acre</option>
-        <option value="Hectare">Hectare</option>
+        <option value="hectare">Hectare</option>
     </select>
     `,
     mass:`
@@ -125,8 +137,9 @@ window.onload = function() {
 function convertLeftToRight() {
     let unit1 = document.getElementById("magnitudes1").value
     let unit2 = document.getElementById("magnitudes2").value
-    let factor1 = unitsEnergy[unit1]
-    let factor2 = unitsEnergy[unit2]
+    let magnitude = document.getElementById("magnitudes").value
+    let factor1 = units[magnitude][unit1]
+    let factor2 = units[magnitude][unit2]
     let value1 = parseFloat(document.getElementById("value1").value);
     if (!isNaN(value1)) {
         let value2 = value1 * (factor2/factor1);
@@ -139,8 +152,9 @@ function convertLeftToRight() {
 function convertRightToLeft() {
     let unit1 = document.getElementById("magnitudes1").value
     let unit2 = document.getElementById("magnitudes2").value
-    let factor1 = unitsEnergy[unit1]
-    let factor2 = unitsEnergy[unit2]
+    let magnitude = document.getElementById("magnitudes").value
+    let factor1 = units[magnitude][unit1]
+    let factor2 = units[magnitude][unit2]
     let value2 = parseFloat(document.getElementById("value2").value);
     if (!isNaN(value2)) {
         let value1 = value2 * (factor1/factor2);
@@ -159,10 +173,18 @@ function changeMagnitude() {
     magnitudeSelect1.innerHTML = magnitudes[magnitudeOption]
     magnitudeSelect2.innerHTML = magnitudes[magnitudeOption]
 
+    let select2 = magnitudeSelect2.querySelector("select");
+
+    if (select2) select2.id = "magnitudes2";
+
+    const input1 = document.getElementById("value1")
+    const input2 = document.getElementById("value2")
+
+    input1.value = ""
+    input2.value = ""
+
     convertLeftToRight();
 }
-
-//Colocar el cambio de unidades
 
 //Colocar que el primeor sea la primera unidad y el segundo la segunda
 
