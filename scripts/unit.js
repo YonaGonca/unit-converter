@@ -336,8 +336,8 @@ function fetchExchangeRates() {
             units.money.pound = data.usd.gbp;
             units.money.yen = data.usd.jpy;
 
-            units.money.bitcoin = data.bitcoin.usd;
-            units.money.ethereum = data.ethereum.usd;
+            units.money.bitcoin = 1/data.bitcoin.usd;
+            units.money.ethereum = 1/data.ethereum.usd;
         })
         .catch(error => console.error("Error al obtener los datos:", error));
 }
